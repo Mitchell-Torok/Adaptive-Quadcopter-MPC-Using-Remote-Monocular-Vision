@@ -1,0 +1,4 @@
+experiment_type,num_trials,x_mean_m,x_std_m,y_mean_m,y_std_m,z_mean_m,z_std_m,3d_mean_m,3d_std_m
+circle,2,0.067,0.011,0.362,0.019,0.033,0.0,0.37,0.016
+xyz_sine,3,0.065,0.012,0.371,0.02,0.049,0.013,0.381,0.019
+z_sin,3,0.044,0.008,0.473,0.015,0.078,0.001,0.481,0.016
