@@ -1,3 +1,7 @@
+**Full source code and simulation environments will be released upon paper acceptance.**
+
+We are committed to open science; however, the repository is currently restricted to ensure the integrity of the peer-review process.
+
 # Adaptive-Quadcopter-MPC-Using-Remote-Monocular-Vision
 
 
@@ -5,7 +9,7 @@
 
 ## Abstract
 
-We present an adaptive control framework for quadcopter trajectory tracking using vision-only feedback. Inspired by first-person view (FPV) piloting, our system uses monocular video streamed to a remote ground station to estimate pose, identify dynamic parameters online, and compute control commands via model predictive control (MPC). The architecture integrates ORB-SLAM3 for real-time pose estimation, an augmented-state Unscented Kalman Filter (UKF) for online estimation of internal quadcopter model parameters, and an MPC controller. All control computation is performed offboard, requiring only a hobby-grade quadcopter equipped with a monocular FPV camera and standard video transmitter. Real-world experimental results demonstrate adaptation across quadcopter configurations and accurate tracking of multiple reference trajectories.
+We present an adaptive control framework for quadcopter trajectory tracking using only monocular video for state estimation. Inspired by first-person view (FPV) piloting, our system uses monocular video streamed to a remote ground station to estimate pose, identify dynamic parameters online, and compute control commands via model predictive control (MPC). The architecture integrates ORB-SLAM3 for real-time pose estimation, an augmented-state Unscented Kalman Filter (UKF) for online estimation of internal quadcopter model parameters, and an MPC controller. All control computation is performed offboard, requiring only a hobby-grade quadcopter equipped with a monocular FPV camera and standard video transmitter. Real-world experimental results demonstrate adaptation across quadcopter configurations and accurate tracking of multiple reference trajectories.
 
 **Experiment Video:** [https://youtu.be/WppZCmhOj2w](https://youtu.be/WppZCmhOj2w)
 
@@ -22,8 +26,8 @@ Coming Soon
 ## Replication Guide
 Coming Soon
 
-%### Calibration
-%![Calibration](README_FILES/CalibrationVid.gif)
+## Calibration
+![Calibration](README_FILES/CalibrationVid.gif)
 
 
 
