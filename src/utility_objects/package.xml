@@ -1,0 +1,14 @@
+<package format="3">
+  <name>utility_objects</name>
+  <version>0.0.1</version>
+  <description>Utility objects for drone controllers</description>
+  <maintainer email="your.email@example.com">Your Name</maintainer>
+  <license>GPL-3.0</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

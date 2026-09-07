@@ -1,0 +1,9 @@
+<library path="drone_visualisation_plugins">
+  <class name="drone_visualisation/ArmPanel"
+         type="drone_visualisation::ArmPanel"
+         base_class_type="rviz_common::Panel">
+    <description>
+      A panel with an ARM button and spacebar shortcut for DISARM.
+    </description>
+  </class>
+</library>

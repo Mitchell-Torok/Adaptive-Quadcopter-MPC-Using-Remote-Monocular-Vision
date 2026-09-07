@@ -1,0 +1,36 @@
+diff --git a/orb_slam3/include/System.h b/orb_slam3/include/System.h
+index f69158e..a4fabcb 100644
+--- a/orb_slam3/include/System.h
++++ b/orb_slam3/include/System.h
+@@ -101,6 +101,11 @@ public:
+     };
+ 
+ public:
++
++    cv::Mat GetViewerImage();
++
++
++
+     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+     
+     // Initialize the SLAM system. It launches the Local Mapping, Loop Closing and Viewer threads.
+diff --git a/orb_slam3/src/System.cc b/orb_slam3/src/System.cc
+index 37a4838..7f91257 100644
+--- a/orb_slam3/src/System.cc
++++ b/orb_slam3/src/System.cc
+@@ -221,6 +221,15 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
+ 
+ }
+ 
++
++cv::Mat System::GetViewerImage()
++{
++    if(!mpFrameDrawer) return cv::Mat();
++    // FrameDrawer::DrawFrame() is internally mutex-protected
++    return mpFrameDrawer->DrawFrame();
++}
++
++
+ Sophus::SE3f System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timestamp, const vector<IMU::Point>& vImuMeas, string filename)
+ {
+     if(mSensor!=STEREO && mSensor!=IMU_STEREO)

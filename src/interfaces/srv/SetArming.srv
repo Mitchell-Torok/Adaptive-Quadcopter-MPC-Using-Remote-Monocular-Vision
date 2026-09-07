@@ -1,0 +1,6 @@
+# Request
+bool arm  # true to arm, false to disarm
+---
+# Response
+bool success  # true if the command was accepted
+string message  # optional status message

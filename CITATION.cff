@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "Adaptive Quadcopter MPC Using Remote Monocular Vision"
+authors:
+  - family-names: Torok
+    given-names: Mitchell
+  - family-names: Deghat
+    given-names: Mohammad
+  - family-names: Song
+    given-names: Yang
+  - family-names: Katupitiya
+    given-names: Jay
+repository-code: "https://github.com/Mitchell-Torok/Adaptive-Quadcopter-MPC-Using-Remote-Monocular-Vision"
+license: GPL-3.0
+preferred-citation:
+  type: article
+  title: "Adaptive quadcopter model predictive control using remote monocular vision"
+  authors:
+    - family-names: Torok
+      given-names: Mitchell
+    - family-names: Deghat
+      given-names: Mohammad
+    - family-names: Song
+      given-names: Yang
+    - family-names: Katupitiya
+      given-names: Jay
+  journal: "Control Engineering Practice"
+  volume: 177
+  year: 2026
+  start: 107235
+  issn: "0967-0661"
+  doi: "10.1016/j.conengprac.2026.107235"
+  url: "https://www.sciencedirect.com/science/article/pii/S0967066126004788"

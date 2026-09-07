@@ -1,0 +1,238 @@
+<?xml version="1.0" ?>
+<!--
+  Multicopter motor plugin demo
+
+  Send commands to go straight up:
+
+      ign topic -t /X3/gazebo/command/motor_speed --msgtype ignition.msgs.Actuators -p 'velocity:[700, 700, 700, 700]'
+
+  And to turn off propellers:
+
+      ign topic -t /X3/gazebo/command/motor_speed --msgtype ignition.msgs.Actuators -p 'velocity:[0, 0, 0, 0]'
+
+-->
+<sdf version="1.6">
+  <world name="quadcopter">
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>500</real_time_update_rate>
+    </physics>
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+
+
+  <scene>
+    <background>0.6 0.8 1.0 1</background>  <!-- light blue -->
+    <ambient>0.5 0.5 0.5 1</ambient>
+  </scene>
+
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <include>
+      <uri>
+        modelLarge.sdf
+      </uri>
+
+      <plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher">
+            <publish_link_pose>true</publish_link_pose>
+            <publish_nested_model_pose>true</publish_nested_model_pose>
+            <use_pose_vector_msg>true</use_pose_vector_msg>
+            <update_frequency>500</update_frequency>
+          </plugin>
+
+      <pose>0.0 0.0 0.1 0 0 0</pose> <!-- Drone positioned at (0,0,1) --> 
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>X3</robotNamespace>
+        <jointName>X3/rotor_0_joint</jointName>
+        <linkName>X3/rotor_0</linkName>
+        <turningDirection>cw</turningDirection>
+        <timeConstantUp>0.0</timeConstantUp>
+        <timeConstantDown>0.0</timeConstantDown>
+        <maxRotVelocity>4631.0</maxRotVelocity>
+        <motorConstant>1.42e-06</motorConstant>
+        <momentConstant>0.2</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>0</actuator_number>
+        <rotorDragCoefficient>0.0</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/0</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>X3</robotNamespace>
+        <jointName>X3/rotor_1_joint</jointName>
+        <linkName>X3/rotor_1</linkName>
+        <turningDirection>ccw</turningDirection>
+        <timeConstantUp>0.0</timeConstantUp>
+        <timeConstantDown>0.0</timeConstantDown>
+        <maxRotVelocity>4631.0</maxRotVelocity>
+        <motorConstant>1.42e-06</motorConstant>
+        <momentConstant>0.2</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>1</actuator_number>
+        <rotorDragCoefficient>0.0</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/1</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>X3</robotNamespace>
+        <jointName>X3/rotor_2_joint</jointName>
+        <linkName>X3/rotor_2</linkName>
+        <turningDirection>ccw</turningDirection>
+        <timeConstantUp>0.0</timeConstantUp>
+        <timeConstantDown>0.0</timeConstantDown>
+        <maxRotVelocity>4631.0</maxRotVelocity>
+        <motorConstant>1.42e-06</motorConstant>
+        <momentConstant>0.2</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>2</actuator_number>
+        <rotorDragCoefficient>0.0</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/2</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>X3</robotNamespace>
+        <jointName>X3/rotor_3_joint</jointName>
+        <linkName>X3/rotor_3</linkName>
+        <turningDirection>cw</turningDirection>
+        <timeConstantUp>0.0</timeConstantUp>
+        <timeConstantDown>0.0</timeConstantDown>
+        <maxRotVelocity>4631.0</maxRotVelocity>
+        <motorConstant>1.42e-06</motorConstant>
+        <momentConstant>0.2</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>3</actuator_number>
+        <rotorDragCoefficient>0.0</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/3</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+
+      <plugin filename="libignition-gazebo-imu-system.so"
+        name="ignition::gazebo::systems::Imu">
+      </plugin>
+
+
+      <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+    </plugin>
+
+
+    </include>
+
+  <model name="floor">
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose>
+    <link name="link">
+      <collision name="col">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>100 100</size>
+          </plane>
+        </geometry>
+      </collision>
+      <visual name="vis">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>100 100</size>
+          </plane>
+        </geometry>
+        <material>
+          <!-- Soft grassy green -->
+          <ambient>0.2 0.5 0.2 1</ambient>
+          <diffuse>0.3 0.6 0.3 1</diffuse>
+          <specular>0.05 0.05 0.05 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+<!-- ArUco Marker -->
+<model name="aruco_marker_1">
+  <include>
+    <uri>model://5x5_1000-0</uri>
+  </include>
+  <pose>1.5 0 1.1 0 0 0</pose> <!-- Position marker at 2m forward, 1.5m high -->
+</model>
+
+
+
+    <include>
+      <name>Lake House</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Lake House</uri>
+      <pose>9 0 -6.5 0 0 0</pose>
+    </include>
+
+
+
+
+    
+  </world>
+</sdf>

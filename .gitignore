@@ -1,0 +1,24 @@
+# colcon / ROS 2 build artefacts
+build/
+install/
+log/
+
+# acados generated code
+c_generated_code/
+acados_ocp.json
+acados_sim.json
+
+# runtime logs written by utility_objects.data_logger (experiment data lives in logs/ExperimentDataSets)
+logs/controller_angle_ukf/
+
+# python
+__pycache__/
+*.py[cod]
+
+# misc
+.vscode/
+.claude/
+*.mp4
+
+# populated by orbslam_interface/setup_orbslam.sh
+src/ros2_orb_slam3/

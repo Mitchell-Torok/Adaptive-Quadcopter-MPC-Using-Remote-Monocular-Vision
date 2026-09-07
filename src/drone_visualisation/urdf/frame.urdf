@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot name="tbs_sourceone_v5">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 -0.02" rpy="0 0 1.57"/>
+      <geometry>
+        <mesh filename="package://drone_visualisation/meshes/tbs_sourceone_v5.stl"
+              scale="0.002 0.002 0.002"/>
+      </geometry>
+      <material name="carbon"><color rgba="0.15 0.15 0.15 1.0"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.02" rpy="0 0 1.57"/>
+      <geometry>
+        <mesh filename="package://drone_visualisation/meshes/tbs_sourceone_v5.stl"
+              scale="0.002 0.002 0.002"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

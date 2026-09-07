@@ -1,0 +1,293 @@
+<sdf version="1.6">
+    <model name="x3">
+        <pose>0 0 0.0 0 0 0</pose>
+        <link name="X3/base_link">
+            <enable_wind>true</enable_wind>
+            <pose frame="">0 0 0 0 0 0</pose>
+            <inertial>
+                <pose frame="">0.0 0.0 0 0 -0 0</pose>
+                <mass>0.6</mass>
+                <inertia>
+                    <ixx>0.001744744189</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.001400539551</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.002782410904</izz>
+                </inertia>
+            </inertial>
+            <collision name="X3/base_link_inertia_collision">
+                <pose frame="">0 0 0 0 0.0 0</pose>
+                <geometry>
+                    <box>
+                        <size>0.12 0.05 0.2</size>
+                    </box>
+                </geometry>
+            </collision>
+
+            <visual name="X3/base_link_inertia_visual">
+                <pose frame="">0 0 -0.025 0 0.0 1.57</pose>
+                <geometry>
+                    <mesh>
+                        <uri>file://tbs_sourceone_v5.stl</uri>
+                        <scale>0.001 0.001 0.001</scale>
+                    </mesh>
+                </geometry>
+                <material>
+                    <ambient>0.15 0.15 0.15 1.0</ambient>
+                    <diffuse>0.15 0.15 0.15 1.0</diffuse>
+                    <specular>0.1 0.1 0.1 1.0</specular>
+                </material>
+            </visual>
+            <sensor name="imu_sensor" type="imu">
+                <always_on>true</always_on>
+                <update_rate>1000</update_rate>
+                <pose>0 0 0 0 0 0</pose>
+                <imu>
+                    <angular_velocity>
+                        <x>true</x>
+                        <y>true</y>
+                        <z>true</z>
+                    </angular_velocity>
+                    <linear_acceleration>
+                        <x>true</x>
+                        <y>true</y>
+                        <z>true</z>
+                    </linear_acceleration>
+                </imu>
+            </sensor>
+
+<sensor name="camera_sensor" type="camera">
+  <always_on>true</always_on>
+  <update_rate>40</update_rate>
+  <pose>0.06 0 0 0 -0.0 0</pose>
+  <camera>
+    <image>
+      <width>640</width>
+      <height>480</height>
+      <format>R8G8B8</format>
+    </image>
+
+    <lens>
+      <type>pinhole</type>
+      <intrinsics>
+        <fx>245.18081</fx>
+        <fy>328.95366</fy>
+        <cx>327.82185</cx>
+        <cy>240.97510</cy>
+        <s>0</s>
+      </intrinsics>
+    </lens>
+  </camera>
+</sensor>
+        </link>
+
+
+
+        <link name="X3/rotor_0">
+            <pose frame="X3/base_link">-0.0765 -0.083 0 0 0 0</pose>
+            <inertial>
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <mass>0.01</mass>
+                <inertia>
+                    <ixx>9.75e-08</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>4.17041e-06</iyy>
+                    <iyz>0</iyz>
+                    <izz>4.26041e-06</izz>
+                </inertia>
+            </inertial>
+        
+            <visual name="X3/rotor_0_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>0.05 0.05 0.05</scale>
+                        <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/x3 uav/4/files/meshes/propeller_ccw.dae</uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <script>
+                        <name>Gazebo/Blue</name>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                    </script>
+                </material>
+            </visual>
+            <gravity>1</gravity>
+            <velocity_decay/>
+        </link>
+        <joint name="X3/rotor_0_joint" type="revolute">
+            <child>X3/rotor_0</child>
+            <parent>X3/base_link</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+
+
+
+        <link name="X3/rotor_1">
+            <pose frame="X3/base_link">0.0765 -0.083 0 0 0 0</pose>
+            <inertial>
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <mass>0.01</mass>
+                <inertia>
+                    <ixx>9.75e-08</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>4.17041e-06</iyy>
+                    <iyz>0</iyz>
+                    <izz>4.26041e-06</izz>
+                </inertia>
+            </inertial>
+           
+            <visual name="X3/rotor_1_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>0.05 0.05 0.05</scale>
+                        <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/x3 uav/4/files/meshes/propeller_ccw.dae</uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <script>
+                        <name>Gazebo/Red</name>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                    </script>
+                </material>
+            </visual>
+            <gravity>1</gravity>
+            <velocity_decay/>
+        </link>
+        <joint name="X3/rotor_1_joint" type="revolute">
+            <child>X3/rotor_1</child>
+            <parent>X3/base_link</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+
+
+
+        <link name="X3/rotor_2">
+            <pose frame="X3/base_link">-0.0765 0.083 0 0 0 0</pose>
+            <inertial>
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <mass>0.01</mass>
+                <inertia>
+                    <ixx>9.75e-08</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>4.17041e-06</iyy>
+                    <iyz>0</iyz>
+                    <izz>4.26041e-06</izz>
+                </inertia>
+            </inertial>
+            
+            <visual name="X3/rotor_2_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>0.05 0.05 0.05</scale>
+                        <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/x3 uav/4/files/meshes/propeller_cw.dae</uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <script>
+                        <name>Gazebo/Blue</name>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                    </script>
+                </material>
+            </visual>
+            <gravity>1</gravity>
+            <velocity_decay/>
+        </link>
+        <joint name="X3/rotor_2_joint" type="revolute">
+            <child>X3/rotor_2</child>
+            <parent>X3/base_link</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+
+
+
+        <link name="X3/rotor_3">
+            <pose frame="X3/base_link">0.0765 0.083 0 0 0 0</pose>
+            <inertial>
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <mass>0.01</mass>
+                <inertia>
+                    <ixx>9.75e-08</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>4.17041e-06</iyy>
+                    <iyz>0</iyz>
+                    <izz>4.26041e-06</izz>
+                </inertia>
+            </inertial>
+            
+            <visual name="X3/rotor_3_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>0.05 0.05 0.05</scale>
+                        <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/x3 uav/4/files/meshes/propeller_cw.dae</uri>
+                    </mesh>
+                </geometry>
+                <material>
+                    <script>
+                        <name>Gazebo/Red</name>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                    </script>
+                </material>
+            </visual>
+            <gravity>1</gravity>
+            <velocity_decay/>
+        </link>
+        <joint name="X3/rotor_3_joint" type="revolute">
+            <child>X3/rotor_3</child>
+            <parent>X3/base_link</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+    </model>
+</sdf>
